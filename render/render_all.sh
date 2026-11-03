@@ -10,6 +10,6 @@ for i in $(seq 0 $((N-1))); do
   node capture.js video $A $B ../build/segments/seg_$i.mp4 > ../build/segments/log_$i.txt 2>&1 &
 done
 wait
-ls ../build/segments/seg_*.mp4 | sort -V | sed "s|^|file '|; s|$|'|" > ../build/segments/list.txt
+for i in $(seq 0 $((N-1))); do echo "file '$(realpath ../build/segments/seg_$i.mp4)'"; done > ../build/segments/list.txt
 ffmpeg -y -loglevel error -f concat -safe 0 -i ../build/segments/list.txt -c copy ../build/video_nosound.mp4
 echo FERTIG
