@@ -35,7 +35,7 @@ subtitles:
   format: ass
   font: "Inter SemiBold"   # systemweit installiert
   size_px: 64
-  max_chars_per_line: 32
+  max_chars_per_line: 34
   max_lines: 2
   margin_bottom_px: 420    # über der TikTok-Bedienleiste
   margin_side_px: 90       # rechts frei für TikTok-Buttons

@@ -1,105 +1,204 @@
-# Szenenplan – Single Source of Truth für Bilder, Clips, Sprache, Untertitel und Sound.
-# Bild-/Video-Prompts auf Englisch (bessere Modellergebnisse), Sprechertext auf Deutsch.
-# Dauern sind Richtwerte; final bestimmt die Länge der Sprachaufnahme den Schnitt.
+# Drehbuch v2 – Single Source of Truth für Bilder, Clips, Sprache, Untertitel und Sound.
+# Bild-/Video-Prompts auf Englisch (bessere Modellergebnisse), Sprechertext/Untertitel auf Deutsch.
+# Zeiten sind Planwerte; final bestimmt die Länge der Sprachaufnahme den Schnitt.
+# Veo-Clips sind 4, 6 oder 8 s lang und werden auf die Shot-Länge gekürzt.
 
 scenes:
   - id: s01_hook
-    time: "0:00-0:05"
-    duration_s: 5
-    vo: "Zehn Sekunden. Mehr braucht es nicht."
-    keyframe: >-
-      Extreme close-up of a white ceramic coffee cup on a wooden café table by a window,
-      soft morning light, steam rising, city street blurred in background.
-    motion: >-
-      The coffee surface slowly bulges upward and separates into trembling floating spheres
-      of liquid, droplets hang weightless in the air, slow push-in, calm and eerie.
-    sfx: [room_tone_cafe, low_sub_swell, liquid_wobble]
+    time: [0.0, 3.0]
+    beat: "Hook – die Behauptung"
+    vo: "Gleich ist die Schwerkraft weg. Zehn Sekunden lang."
+    subtitles: ["Gleich ist die Schwerkraft weg.", "Zehn Sekunden lang."]
+    shots:
+      - id: s01a
+        length: 3.0
+        camera: "Draufsicht, 90° senkrecht von oben, langsamer Push-in"
+        keyframe: >-
+          Top-down overhead shot of a busy pedestrian zebra crossing in a European city,
+          dozens of adults crossing in both directions, long morning shadows, wet asphalt.
+        motion: >-
+          People walk normally across the crossing, very slow push-in from above, everything ordinary.
+    sfx: ["Stadt-Atmo (laut, direkt ab Frame 1)", "tiefer Sub-Impact auf ‚weg'", "leises Uhr-Ticken setzt ein"]
+    music: "noch keine – nur ein tiefer Drone-Ton kommt mit dem Impact"
 
-  - id: s02_frage
-    time: "0:05-0:11"
-    duration_s: 6
-    vo: "Was würde passieren, wenn die Erde ihre Schwerkraft verliert – für genau zehn Sekunden?"
-    keyframe: >-
-      Aerial drone shot of a European city center at sunrise, river, bridges, traffic,
-      golden haze, realistic, ordinary morning.
-    motion: Slow forward drone flight, gentle descent, normal traffic moving, birds in distance.
-    sfx: [city_ambience_far, wind_soft]
+  - id: s02_twist
+    time: [3.0, 6.0]
+    beat: "Die Überraschung"
+    vo: "Und du würdest nichts davon merken."
+    subtitles: ["Und du würdest\nnichts davon merken."]
+    shots:
+      - id: s02a
+        length: 3.0
+        camera: "Augenhöhe, statisch, 50 mm, Zeitlupen-Anmutung"
+        keyframe: >-
+          Eye-level medium shot of a man in his thirties at a café table on a city sidewalk,
+          holding a coffee cup, looking calmly at the street, soft morning light.
+        motion: >-
+          He takes a sip and sets the cup down, passers-by walk behind him, completely normal, subtle slow motion.
+    sfx: ["Atmo wird leicht gedämpft", "Uhr-Ticken läuft weiter"]
+    music: "Drone hält"
 
-  - id: s03_sekunde_null
-    time: "0:11-0:17"
-    duration_s: 6
-    vo: "Im ersten Augenblick: fast nichts. Niemand wird ins All geschleudert."
-    keyframe: >-
-      Pedestrian street in a German city, adults walking mid-stride, shopping bags, café chairs,
-      eye-level documentary shot.
-    motion: >-
-      People's feet slowly lose contact with the ground by a few centimeters, they look down
-      confused, a paper bag lifts gently, slow motion feel.
-    sfx: [street_ambience, ambience_drop_to_muffled, cloth_rustle]
+  - id: s03_irrtum
+    time: [6.0, 12.5]
+    beat: "Der verbreitete Irrtum – visuell als Vorstellung markiert"
+    vo: "Die meisten denken, wir würden abheben. Menschen, Autos, das Meer. So läuft das aber nicht."
+    subtitles: ["Die meisten denken,\nwir würden abheben.", "Menschen, Autos, das Meer.", "So läuft das aber nicht."]
+    look: "traumhaft: weichgezeichnet, leicht entsättigt, Zeitlupe → harter Schnitt mit Stille"
+    shots:
+      - id: s03a
+        length: 3.5
+        camera: "Halbtotale, langsamer Kran nach oben, mitschwebend"
+        keyframe: >-
+          Dreamlike soft-focus shot of adults floating upward above a city street, coats and hair drifting,
+          surprised faces, hazy backlight, desaturated.
+        motion: Several people slowly float upward off the street, gentle rotation, dreamy slow motion.
+      - id: s03b
+        length: 3.0
+        camera: "Totale von der Küste, statisch"
+        keyframe: >-
+          Dreamlike soft-focus wide shot of a coastline where sea water rises in floating blobs and a car
+          hovers above a coastal road, hazy, desaturated.
+        motion: Water blobs and the car drift upward in slow motion, soft and unreal.
+    sfx: ["luftiges Whoosh, Hall", "Ticken verschwimmt", "auf ‚nicht': abrupt 0,4 s Stille"]
+    music: "schwebende Fläche, bricht mit dem Schnitt ab"
 
-  - id: s04_rotation
-    time: "0:17-0:27"
-    duration_s: 10
-    vo: >-
-      Aber die Erde dreht sich – hier mit über tausend Kilometern pro Stunde. Ohne Schwerkraft
-      fliegt alles einfach geradeaus weiter. Langsam, aber unaufhaltsam, löst sich alles vom Boden.
-    keyframe: >-
-      Wide shot of a city park with a fountain, people, pigeons, autumn leaves, overcast soft light.
-    motion: >-
-      Fountain water freezes into hanging arcs and floating blobs, leaves and pigeons drift upward,
-      people float about one meter above the grass, slow lateral camera move.
-    sfx: [park_ambience, water_glug_floating, low_drone_rise]
+  - id: s04_druck
+    time: [12.5, 22.0]
+    beat: "Die Erklärung – Druck im Boden"
+    vo: "Alles unter dir wird vom eigenen Gewicht zusammengedrückt, bis runter zum Erdkern. Dieser Druck verschwindet nicht einfach. Er drückt weiter nach oben."
+    subtitles: ["Alles unter dir wird vom\neigenen Gewicht zusammengedrückt,", "bis runter zum Erdkern.", "Dieser Druck verschwindet\nnicht einfach.", "Er drückt weiter nach oben."]
+    shots:
+      - id: s04a
+        length: 3.5
+        camera: "Makro, bodennah, statisch"
+        keyframe: >-
+          Macro shot at ground level of a leather shoe standing on old cobblestones,
+          fine dust and texture, shallow depth of field.
+        motion: The shoe shifts weight slightly, tiny dust particles move, camera very slowly tilts down.
+      - id: s04b
+        length: 6.0
+        camera: "vertikale Abwärtsfahrt durch einen Querschnitt (Doku-Visualisierung)"
+        keyframe: >-
+          Photorealistic scientific cutaway of the ground beneath a city: pavement, soil, layered bedrock,
+          deeper dark rock with faint red glow far below, documentary visualization, museum-quality realism.
+        motion: >-
+          Camera descends vertically through the rock layers toward the glowing depth, rock subtly
+          creaking under pressure, slow and heavy.
+    sfx: ["Ticken", "tiefes Knarzen von Gestein", "Druck-Rumble, langsam ansteigend", "Sub-Puls auf ‚nach oben'"]
+    music: "Drone kehrt zurück, tiefer"
 
-  - id: s05_strasse
-    time: "0:27-0:33"
-    duration_s: 6
-    vo: "Autos verlieren jede Haftung. Bremsen sind plötzlich wirkungslos."
-    keyframe: >-
-      City road with moving cars and a tram, low angle near the asphalt, wet street reflections.
-    motion: >-
-      Cars keep sliding straight ahead without grip, wheels spinning freely slightly above the road,
-      brake lights glowing uselessly, no crash shown.
-    sfx: [traffic_ambience, tire_skid_soft, car_horn_distant]
+  - id: s05_aufzug
+    time: [22.0, 28.5]
+    beat: "Der Boden beschleunigt – und keiner merkt es"
+    vo: "Der Boden schiebt dich also mit nach oben. Genau so stark, dass es sich anfühlt wie immer."
+    subtitles: ["Der Boden schiebt dich\nalso mit nach oben.", "Genau so stark, dass es sich\nanfühlt wie immer."]
+    shots:
+      - id: s05a
+        length: 6.5
+        camera: "Luftaufnahme, Drohne steigt langsam senkrecht auf"
+        keyframe: >-
+          Aerial shot of a European old town with a river, bridges, trams and people,
+          late morning light, ordinary busy day.
+        motion: Slow vertical drone rise, traffic and people moving completely normally.
+    sfx: ["normale Stadt-Atmo von oben", "Wind", "Ticken"]
+    music: "Drone, leichter Puls"
 
-  - id: s06_ozean
-    time: "0:33-0:40"
-    duration_s: 7
-    vo: "Die Ozeane, sonst vom eigenen Gewicht zusammengepresst, dehnen sich aus. Der Meeresspiegel steigt."
-    keyframe: >-
-      Rocky North Sea coastline, overcast sky, grey-blue sea, wide establishing shot.
-    motion: >-
-      The sea surface slowly swells and lifts, spray and droplets rise into the air instead of falling,
-      bubbles foam up from the water, ominous slow motion.
-    sfx: [ocean_waves, deep_rumble, fizzing_bubbles]
+  - id: s06_ball
+    time: [28.5, 35.0]
+    beat: "Bestehende Bewegungen laufen weiter"
+    vo: "Ein Ball in der Luft fliegt jetzt einfach geradeaus. Landen tut er trotzdem. Der Boden kommt ihm entgegen."
+    subtitles: ["Ein Ball in der Luft fliegt\njetzt einfach geradeaus.", "Landen tut er trotzdem.", "Der Boden kommt ihm entgegen."]
+    shots:
+      - id: s06a
+        length: 6.5
+        camera: "seitliche Kamerafahrt, Augenhöhe, Zeitlupe"
+        keyframe: >-
+          Side view in a city park, a young woman has just thrown a tennis ball, a dog runs after it,
+          ball in mid-air, green grass, soft daylight.
+        motion: >-
+          The ball flies in a normal arc and lands on the grass, the dog catches up, slow motion,
+          camera tracks sideways.
+    sfx: ["Wurf-Swoosh", "Ball-Aufprall auf Gras", "Hund hechelt, ferne Park-Atmo", "Ticken"]
+    music: "Drone"
 
-  - id: s07_erdinneres
-    time: "0:40-0:47"
-    duration_s: 7
-    vo: "Und tief unter uns entlädt sich der gewaltige Druck im Erdinneren. Überall auf der Welt bebt der Boden."
-    keyframe: >-
-      Alpine valley with a road and rock walls, dramatic but natural light, dust in the air.
-    motion: >-
-      The ground trembles, cracks open in the asphalt, rock dust and pebbles float upward,
-      camera shake subtle, documentary handheld feel.
-    sfx: [earthquake_rumble, rock_crack, debris_rattle]
+  - id: s07_satelliten
+    time: [35.0, 41.5]
+    beat: "Wer es merkt: Satelliten und GPS"
+    vo: "Merken würden es nur Satelliten. Und dein GPS: Nach zehn Sekunden stehst du fast 500 Meter höher."
+    subtitles: ["Merken würden es nur Satelliten.", "Und dein GPS:", "Nach zehn Sekunden stehst du\nfast 500 Meter höher."]
+    shots:
+      - id: s07a
+        length: 3.5
+        camera: "Orbit, langsame Umkreisung"
+        keyframe: >-
+          A navigation satellite with solar panels in orbit above Earth, night side with city lights below,
+          thin blue atmosphere line, photorealistic.
+        motion: Very slow orbit around the satellite, Earth turning beneath, subtle sun glint.
+      - id: s07b
+        length: 3.0
+        camera: "Over-the-shoulder, Smartphone in der Hand, Kartenansicht unscharf"
+        keyframe: >-
+          Over-the-shoulder shot of a person on a city street holding a smartphone with a blurred map app,
+          shallow depth of field, screen content not readable.
+        motion: The location dot on the blurred map jumps slightly, the person frowns, subtle handheld.
+    sfx: ["Weltraum-Stille, leises Funk-Zirpen", "Handy-Vibration/Ping", "letzter Tick – dann bricht das Ticken ab"]
+    music: "Drone dünnt aus"
 
   - id: s08_rueckkehr
-    time: "0:47-0:53"
-    duration_s: 6
-    vo: "Dann – nach zehn Sekunden – kehrt die Schwerkraft zurück. Alles fällt."
-    keyframe: >-
-      Same pedestrian street as scene 3, people and objects hovering about one meter in the air.
-    motion: >-
-      Everything drops at once, people land and stumble, bags and leaves fall, dust puffs up,
-      realistic weight and impact.
-    sfx: [silence_beat, impact_thud_multi, crowd_gasp_soft]
+    time: [41.5, 48.0]
+    beat: "Die Schwerkraft kommt zurück – die Erde ist in Bewegung"
+    vo: "Dann kommt die Schwerkraft zurück. Nur: Die Erdoberfläche rast inzwischen mit über 300 Kilometern pro Stunde nach außen."
+    subtitles: ["Dann kommt die\nSchwerkraft zurück.", "Nur: Die Erdoberfläche rast\ninzwischen mit über 300 km/h", "nach außen."]
+    shots:
+      - id: s08a
+        length: 6.5
+        camera: "Höhenaufnahme über Gebirge, langsamer Vorwärtsflug, erste Erschütterung"
+        keyframe: >-
+          High-altitude aerial shot over an alpine mountain range at dawn, clouds in the valleys,
+          vast scale, crisp light.
+        motion: >-
+          Slow forward flight, then a faint tremor runs through the landscape, clouds ripple,
+          camera shudders subtly.
+    sfx: ["½ s Stille", "massiver Sub-Boom auf ‚zurück'", "tiefes Grollen baut sich auf"]
+    music: "dunkler, tiefer Akkord setzt ein"
 
-  - id: s09_outro
-    time: "0:53-0:58"
-    duration_s: 5
-    vo: "Zehn Sekunden. Und die Welt wäre nicht mehr dieselbe."
-    keyframe: Same coffee cup as scene 1, table now splashed with spilled coffee.
-    motion: >-
-      Floating coffee droplets fall and splash onto the table, cup wobbles and settles,
-      slow pull-back, calm ending (loopable back to scene 1).
-    sfx: [liquid_splash, room_tone_cafe, music_resolve]
+  - id: s09_beben
+    time: [48.0, 54.0]
+    beat: "Höhepunkt – die Kruste reißt"
+    vo: "Sie schießt kilometerweit hinaus, bis das Gestein reißt. Erdbeben, überall gleichzeitig."
+    subtitles: ["Sie schießt kilometerweit hinaus,", "bis das Gestein reißt.", "Erdbeben, überall gleichzeitig."]
+    shots:
+      - id: s09a
+        length: 3.0
+        camera: "bodennah, Handkamera, starkes Wackeln"
+        keyframe: >-
+          Low handheld shot of a country road through fields, the asphalt splitting with a fresh crack,
+          dust rising, dramatic overcast light.
+        motion: The crack widens and runs toward the camera, dust erupts, strong realistic camera shake.
+      - id: s09b
+        length: 3.0
+        camera: "Totale auf eine Stadt, Schwenk"
+        keyframe: >-
+          Wide shot of a city skyline at dusk with dust clouds rising between buildings,
+          distant emergency lights, no fire, documentary realism.
+        motion: Buildings sway slightly, dust plumes rise, birds scatter, slow pan.
+    sfx: ["Erdbeben-Rumble (Höhepunkt)", "Gesteinsbruch, Knacken", "ferne Autoalarme, Vögel"]
+    music: "Höhepunkt, dann sofortiges Ausdünnen"
+
+  - id: s10_ende
+    time: [54.0, 59.0]
+    beat: "Abschluss – Rückbezug auf den Anfang (Loop)"
+    vo: "Zehn Sekunden, die keiner spürt. Was danach kommt, spürt jeder."
+    subtitles: ["Zehn Sekunden, die keiner spürt.", "Was danach kommt, spürt jeder."]
+    shots:
+      - id: s10a
+        length: 5.0
+        camera: "Makro, statisch, gleiche Tasse wie in s02"
+        keyframe: >-
+          Macro shot of the same white coffee cup on the café table from scene 2, coffee surface calm,
+          street blurred behind.
+        motion: >-
+          Concentric ripples appear on the coffee surface, the cup rattles softly on its saucer,
+          then everything goes still.
+    sfx: ["Rumble klingt aus", "Tasse klirrt auf Untertasse", "Stille, letzter einzelner Tick (Loop-Anschluss)"]
+    music: "löst sich in einen einzelnen tiefen Ton auf"

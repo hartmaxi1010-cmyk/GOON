@@ -1,6 +1,6 @@
 # Projektplan – „Was wäre, wenn die Schwerkraft 10 Sekunden aussetzt?"
 
-Status: **Phase 1 abgeschlossen. Warte auf Freigabe für Phase 2.**
+Status: **Phase 2 (Drehbuch) fertig → siehe [DREHBUCH.md](DREHBUCH.md). Warte auf Freigabe für die visuelle Umsetzung.**
 
 ## 1. Bestandsaufnahme
 
@@ -37,30 +37,18 @@ Status: **Phase 1 abgeschlossen. Warte auf Freigabe für Phase 2.**
 | Bewegung | **Google Veo (3.x)**, Bild-zu-Video aus dem Keyframe, 9:16, Clips mit max. 8 s | glaubwürdige Physik und Bewegung, Konsistenz durch Keyframe |
 | 60 fps | Veo liefert 24 fps → **FFmpeg `minterpolate`** (bewegungskompensiert) auf 60 fps | einzige lokal machbare Lösung ohne GPU. Ausweichlösung: 60 fps per Bildverdopplung (ohne Artefakte, aber nicht flüssiger) |
 | 1080×1920 | Erzeugung in der höchsten 9:16-Stufe, die Veo anbietet. Falls nur 720p: Lanczos-Skalierung mit leichtem Nachschärfen | wird in Phase 2 per Testaufruf geprüft |
-| Sprecherstimme | **Empfehlung: ElevenLabs** (Multilingual, deutsche Männerstimme aus der Voice Library). **Alternative: Gemini-TTS** (kein weiterer Dienst nötig) | in Phase 2: Hörprobe beider Stimmen zum Vergleich |
+| Sprecherstimme | **Gemini-TTS im kostenlosen Kontingent** (Entscheidung Phase 2, Wunsch: kostenlos). Ich teste mehrere Männerstimmen mit Regieanweisung („ruhiger Doku-Erzähler") und wähle das beste verfügbare TTS-Modell | beste Gratis-Option, die hier erreichbar ist. Lokales Piper wäre deutlich roboterhafter (und die Modell-Downloads sind blockiert) |
 | Untertitel | eine **eingebrannte ASS-Spur** (libass), automatisch getaktet aus den Sprachaufnahmen, Inter SemiBold, 2 Zeilen, innerhalb der TikTok-Safe-Zone | genau eine Spur. Hinweis: TikTok-Auto-Untertitel beim Upload **deaktivieren**, sonst erscheinen sie doppelt |
 | Soundeffekte | ① Veo-Originalton der Clips (Umgebung, Wasser, Rumpeln) als SFX-Spur, ② lokal synthetisierte Effekte (Sub-Swell, Rumble, Whoosh, Stille-Moment) mit numpy | keine Lizenzprobleme. Stock-Bibliotheken sind blockiert, eigene Dateien kannst du in `assets/sfx/` ablegen |
 | Musik | lokal komponierte, dezente **Ambient-Drone** (numpy/FFmpeg). Alternativ dein eigener lizenzierter Track in `assets/music/` | lizenzfrei. Ducking unter der Stimme per Sidechain |
 | Mix / Mastering | Stimme −16 LUFS, Musik gedämpft, Ende `loudnorm` auf **−14 LUFS / −1 dBTP** | Plattform-Standard |
 | Encoding | H.264 High@4.2, yuv420p, CRF 17, 60 fps CFR, GOP 120, BT.709, AAC 48 kHz 192 kbit/s, `+faststart` | entspricht deinen Vorgaben |
 
-## 3. Szenenplan (≈ 58 s)
+## 3. Szenenplan
 
-| # | Zeit | Bild | Sprechertext (Kurzform) | Sound |
-|---|---|---|---|---|
-| 1 | 0:00–0:05 | Kaffeetasse, Flüssigkeit hebt als schwebende Kugeln ab | „Zehn Sekunden. Mehr braucht es nicht." | Café-Raumton, Sub-Swell |
-| 2 | 0:05–0:11 | Drohnenflug über europäische Stadt bei Sonnenaufgang | Die Frage | ferne Stadt, Wind |
-| 3 | 0:11–0:17 | Fußgängerzone, Füße lösen sich minimal | „Fast nichts. Niemand wird ins All geschleudert." | Straße, Umgebung wird dumpf |
-| 4 | 0:17–0:27 | Park: Brunnenwasser in Bögen, Laub und Menschen ≈ 1 m hoch | Erdrotation, alles fliegt geradeaus weiter | Drone steigt |
-| 5 | 0:27–0:33 | Autos gleiten ohne Haftung, Bremslichter | „Bremsen sind wirkungslos." | Reifen, ferne Hupe |
-| 6 | 0:33–0:40 | Nordseeküste, Meer hebt sich, Gischt steigt | Ozeane dehnen sich aus | Wellen, Tiefenrumpeln |
-| 7 | 0:40–0:47 | Alpental, Risse im Asphalt, Steine schweben | Druck im Erdinneren, Beben | Erdbeben-Rumble |
-| 8 | 0:47–0:53 | Fußgängerzone: alles fällt gleichzeitig | „Alles fällt." | **½ s Stille**, dann Aufprall |
-| 9 | 0:53–0:58 | Kaffeetropfen fallen auf den Tisch (Loop zu Szene 1) | „…nicht mehr dieselbe." | Platschen, Musik löst auf |
+Ersetzt durch Drehbuch v2: **[DREHBUCH.md](DREHBUCH.md)** (10 Szenen, 14 Einstellungen, ≈ 59 s). Maschinenlesbar in `config/scenes.yaml`.
 
-Details mit Prompts: `config/scenes.yaml`. Sprechertext und Faktencheck: `script/voiceover_de.md`.
-
-**Spannungsbogen:** ruhiger Einstieg → Staunen (1–4) → Kontrollverlust (5) → Bedrohung (6–7) → Höhepunkt mit Stille und Aufprall (8) → nachdenklicher Schluss als Loop (9).
+**Inhaltliche Korrektur gegenüber Phase 1:** Wenn man die Physik konsequent durchrechnet, schweben Menschen nicht ab. Der Druck im Boden bleibt bestehen und beschleunigt alles gemeinsam (siehe Faktencheck in `script/voiceover_de.md`). Schwebende Menschen erscheinen deshalb nur noch in S03, und dort ausdrücklich als „Irrtum".
 
 ## 4. Pipeline – so wird alles zusammengeführt
 
@@ -87,13 +75,13 @@ Die Szenenlänge richtet sich nach der Sprachaufnahme: Szene = Sprachdauer + Ate
 | Dienst | Nötig? | Zugang | Kosten (Stand meines Wissens, bitte aktuell prüfen) |
 |---|---|---|---|
 | **Google Gemini API** (Imagen + Veo) | **Pflicht** | API-Schlüssel aus Google AI Studio, **Abrechnung aktiviert** (Veo gibt es nur im bezahlten Tarif) | Imagen ca. 0,04 $/Bild. Veo „Fast" ca. 0,15 $/s, Veo Standard ca. 0,40 $/s. **Schätzung gesamt: ca. 25–65 $** (9 Clips, ca. 2 Versuche je Szene) |
-| **ElevenLabs** | optional, empfohlen | API-Schlüssel. Kommerzielle Nutzung erst ab einem bezahlten Abo (ab ca. 5 $/Monat). **Zusätzlich** muss `api.elevenlabs.io` in der Netzwerk-Freigabe ergänzt werden | ab ca. 5 $ |
-| Gemini-TTS | Alternative zu ElevenLabs | gleicher Gemini-Schlüssel | wenige Cent |
+| ElevenLabs | nicht mehr geplant | API-Schlüssel. Kommerzielle Nutzung erst ab einem bezahlten Abo (ab ca. 5 $/Monat). **Zusätzlich** muss `api.elevenlabs.io` in der Netzwerk-Freigabe ergänzt werden | ab ca. 5 $ |
+| **Gemini-TTS** | **gewählt** | Gemini-API-Schlüssel. Kostenlos nur mit einem Schlüssel aus einem Projekt **ohne** aktivierte Abrechnung (Gratis-Kontingent, Google darf Eingaben dort zur Verbesserung nutzen). Mit Abrechnung kostet es ca. 1–2 Cent für das ganze Video | 0 $ |
 | Musik/SFX-Dienste | nicht nötig | – | 0 $ (lokal erzeugt) |
 
 **So hinterlegst du die Zugangsdaten (bitte nicht in den Chat kopieren):**
 Im Titelbereich der Session das Umgebungsmenü öffnen → *Edit* → dort unter *Network secrets* bzw. als Umgebungsvariable
-`GEMINI_API_KEY` (und optional `ELEVENLABS_API_KEY`) eintragen. Für ElevenLabs zusätzlich unter *Network access → Allowed domains* den Eintrag `api.elevenlabs.io` hinzufügen und „Allow package managers" angehakt lassen. Doku: https://code.claude.com/docs/en/cloud-environments#network-access.
+`GEMINI_API_KEY` (Projekt mit Abrechnung, für Imagen und Veo) und optional `GEMINI_TTS_API_KEY` (zweites Projekt ohne Abrechnung, für die kostenlose Stimme) eintragen. Fehlt der zweite Schlüssel, nutze ich den ersten (ca. 1–2 Cent).
 Eine **neue Session** übernimmt die Änderungen.
 
 ## 6. Ehrliche Grenzen

@@ -1,6 +1,5 @@
 # Wird in Phase 2 installiert (PyPI ist erreichbar)
 google-genai        # Imagen + Veo + Gemini-TTS
-elevenlabs          # optional: Sprecherstimme
 pyyaml              # Szenen-Konfiguration
 numpy               # bereits installiert – Audio-Synthese (Musik-Drone, SFX)
 scipy               # Filter für Audio-Synthese
