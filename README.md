@@ -2,7 +2,9 @@
 
 TikTok-Video, 9:16, 1080×1920, 60 fps, H.264/AAC, ca. 55–60 s, deutsche Sprecherstimme.
 
-- **Drehbuch: [docs/DREHBUCH.md](docs/DREHBUCH.md)**
+- **Fertiges Video: `output/schwerkraft_final.mp4`** (wird nicht ins Git eingecheckt, siehe Release/Upload)
+- **Umsetzung & Neu-Rendern: [docs/UMSETZUNG.md](docs/UMSETZUNG.md)**
+- Drehbuch: [docs/DREHBUCH.md](docs/DREHBUCH.md)
 - Projektplan: [docs/PROJEKTPLAN.md](docs/PROJEKTPLAN.md)
 - Szenen und Prompts: [config/scenes.yaml](config/scenes.yaml)
 - Technische Vorgaben: [config/project.yaml](config/project.yaml)

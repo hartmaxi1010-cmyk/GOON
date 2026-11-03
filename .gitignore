@@ -6,3 +6,6 @@ output/
 __pycache__/
 *.pyc
 .venv/
+models/
+render/node_modules/
+render/package-lock.json

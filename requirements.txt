@@ -3,3 +3,4 @@ google-genai        # Imagen + Veo + Gemini-TTS
 pyyaml              # Szenen-Konfiguration
 numpy               # bereits installiert – Audio-Synthese (Musik-Drone, SFX)
 scipy               # Filter für Audio-Synthese
+sherpa-onnx==1.12.40   # kostenlose Offline-Stimme (Piper Thorsten)
