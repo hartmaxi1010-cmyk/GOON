@@ -1,0 +1,105 @@
+# Szenenplan – Single Source of Truth für Bilder, Clips, Sprache, Untertitel und Sound.
+# Bild-/Video-Prompts auf Englisch (bessere Modellergebnisse), Sprechertext auf Deutsch.
+# Dauern sind Richtwerte; final bestimmt die Länge der Sprachaufnahme den Schnitt.
+
+scenes:
+  - id: s01_hook
+    time: "0:00-0:05"
+    duration_s: 5
+    vo: "Zehn Sekunden. Mehr braucht es nicht."
+    keyframe: >-
+      Extreme close-up of a white ceramic coffee cup on a wooden café table by a window,
+      soft morning light, steam rising, city street blurred in background.
+    motion: >-
+      The coffee surface slowly bulges upward and separates into trembling floating spheres
+      of liquid, droplets hang weightless in the air, slow push-in, calm and eerie.
+    sfx: [room_tone_cafe, low_sub_swell, liquid_wobble]
+
+  - id: s02_frage
+    time: "0:05-0:11"
+    duration_s: 6
+    vo: "Was würde passieren, wenn die Erde ihre Schwerkraft verliert – für genau zehn Sekunden?"
+    keyframe: >-
+      Aerial drone shot of a European city center at sunrise, river, bridges, traffic,
+      golden haze, realistic, ordinary morning.
+    motion: Slow forward drone flight, gentle descent, normal traffic moving, birds in distance.
+    sfx: [city_ambience_far, wind_soft]
+
+  - id: s03_sekunde_null
+    time: "0:11-0:17"
+    duration_s: 6
+    vo: "Im ersten Augenblick: fast nichts. Niemand wird ins All geschleudert."
+    keyframe: >-
+      Pedestrian street in a German city, adults walking mid-stride, shopping bags, café chairs,
+      eye-level documentary shot.
+    motion: >-
+      People's feet slowly lose contact with the ground by a few centimeters, they look down
+      confused, a paper bag lifts gently, slow motion feel.
+    sfx: [street_ambience, ambience_drop_to_muffled, cloth_rustle]
+
+  - id: s04_rotation
+    time: "0:17-0:27"
+    duration_s: 10
+    vo: >-
+      Aber die Erde dreht sich – hier mit über tausend Kilometern pro Stunde. Ohne Schwerkraft
+      fliegt alles einfach geradeaus weiter. Langsam, aber unaufhaltsam, löst sich alles vom Boden.
+    keyframe: >-
+      Wide shot of a city park with a fountain, people, pigeons, autumn leaves, overcast soft light.
+    motion: >-
+      Fountain water freezes into hanging arcs and floating blobs, leaves and pigeons drift upward,
+      people float about one meter above the grass, slow lateral camera move.
+    sfx: [park_ambience, water_glug_floating, low_drone_rise]
+
+  - id: s05_strasse
+    time: "0:27-0:33"
+    duration_s: 6
+    vo: "Autos verlieren jede Haftung. Bremsen sind plötzlich wirkungslos."
+    keyframe: >-
+      City road with moving cars and a tram, low angle near the asphalt, wet street reflections.
+    motion: >-
+      Cars keep sliding straight ahead without grip, wheels spinning freely slightly above the road,
+      brake lights glowing uselessly, no crash shown.
+    sfx: [traffic_ambience, tire_skid_soft, car_horn_distant]
+
+  - id: s06_ozean
+    time: "0:33-0:40"
+    duration_s: 7
+    vo: "Die Ozeane, sonst vom eigenen Gewicht zusammengepresst, dehnen sich aus. Der Meeresspiegel steigt."
+    keyframe: >-
+      Rocky North Sea coastline, overcast sky, grey-blue sea, wide establishing shot.
+    motion: >-
+      The sea surface slowly swells and lifts, spray and droplets rise into the air instead of falling,
+      bubbles foam up from the water, ominous slow motion.
+    sfx: [ocean_waves, deep_rumble, fizzing_bubbles]
+
+  - id: s07_erdinneres
+    time: "0:40-0:47"
+    duration_s: 7
+    vo: "Und tief unter uns entlädt sich der gewaltige Druck im Erdinneren. Überall auf der Welt bebt der Boden."
+    keyframe: >-
+      Alpine valley with a road and rock walls, dramatic but natural light, dust in the air.
+    motion: >-
+      The ground trembles, cracks open in the asphalt, rock dust and pebbles float upward,
+      camera shake subtle, documentary handheld feel.
+    sfx: [earthquake_rumble, rock_crack, debris_rattle]
+
+  - id: s08_rueckkehr
+    time: "0:47-0:53"
+    duration_s: 6
+    vo: "Dann – nach zehn Sekunden – kehrt die Schwerkraft zurück. Alles fällt."
+    keyframe: >-
+      Same pedestrian street as scene 3, people and objects hovering about one meter in the air.
+    motion: >-
+      Everything drops at once, people land and stumble, bags and leaves fall, dust puffs up,
+      realistic weight and impact.
+    sfx: [silence_beat, impact_thud_multi, crowd_gasp_soft]
+
+  - id: s09_outro
+    time: "0:53-0:58"
+    duration_s: 5
+    vo: "Zehn Sekunden. Und die Welt wäre nicht mehr dieselbe."
+    keyframe: Same coffee cup as scene 1, table now splashed with spilled coffee.
+    motion: >-
+      Floating coffee droplets fall and splash onto the table, cup wobbles and settles,
+      slow pull-back, calm ending (loopable back to scene 1).
+    sfx: [liquid_splash, room_tone_cafe, music_resolve]

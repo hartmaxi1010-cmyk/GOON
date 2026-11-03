@@ -1,0 +1,50 @@
+# Technische Ausgabespezifikation – zentrale Quelle für alle Pipeline-Schritte
+title: "Was wäre, wenn die Schwerkraft 10 Sekunden aussetzt?"
+target_duration_s: [50, 60]
+
+video:
+  width: 1080
+  height: 1920
+  aspect: "9:16"
+  fps: 60                  # KI-Clips kommen mit 24 fps -> Bewegungsinterpolation auf 60
+  codec: libx264
+  profile: high
+  level: "4.2"
+  pix_fmt: yuv420p
+  crf: 17
+  preset: slow
+  gop: 120                 # Keyframe alle 2 s
+  color: bt709
+  container: mp4
+  faststart: true
+
+audio:
+  codec: aac
+  sample_rate: 48000
+  channels: 2
+  bitrate: 192k
+  loudness_lufs: -14       # übliches Ziel für Social-Plattformen
+  true_peak_db: -1.0
+  mix:                     # relative Pegel vor der Endnormalisierung
+    voice_lufs: -16
+    music_db_under_voice: -20   # Musik zusätzlich per Sidechain-Ducking abgesenkt
+    sfx_db_under_voice: -8
+
+subtitles:
+  mode: burned_in          # genau EINE eingebrannte Spur
+  format: ass
+  font: "Inter SemiBold"   # systemweit installiert
+  size_px: 64
+  max_chars_per_line: 32
+  max_lines: 2
+  margin_bottom_px: 420    # über der TikTok-Bedienleiste
+  margin_side_px: 90       # rechts frei für TikTok-Buttons
+
+look:
+  style_suffix: >-
+    photorealistic documentary cinematography, shot on ARRI Alexa 35, 35mm lens,
+    natural light, shallow depth of field, subtle film grain, muted cinematic color grade,
+    realistic physics, no text, no watermark
+  negative: >-
+    cartoon, illustration, CGI look, distorted faces, extra limbs, text, logos, watermark,
+    oversaturated, fast chaotic motion

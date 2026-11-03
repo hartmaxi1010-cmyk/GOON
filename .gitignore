@@ -1,0 +1,8 @@
+# Zwischenergebnisse und Renderings (groß, jederzeit reproduzierbar)
+build/
+output/
+# Zugangsdaten niemals committen
+.env
+__pycache__/
+*.pyc
+.venv/
